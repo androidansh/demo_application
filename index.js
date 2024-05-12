@@ -30,8 +30,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 const User = require("./models/user")
-const ToDO = require("./models/todos");
-const Todo = require("../api/models/todos.js");
+
 
 // creting the user
 app.get('/', (req, res) => {
@@ -157,7 +156,7 @@ app.patch("/todos/:id/complete", async (req, res) => {
 
         const {id} = req.params;
         console.log("REceived ID = ",id)
-        const updatedTodo = await Todo.findOneAndUpdate({_id:id}, {
+        const updatedTodo = await ToDo.findOneAndUpdate({_id:id}, {
             status: 'completed'
         }, { new: true })
 
@@ -177,7 +176,7 @@ app.get("/todos/completed/:date",async(req,res) => {
     try{
         const date = req.params.date
 
-        const completedTodos = await Todo.find({
+        const completedTodos = await ToDo.find({
             status:"completed",
             createdAt:{
                 $gte:new Date(`${date}T00:00:00.000Z`), //start of selected date
@@ -193,11 +192,11 @@ app.get("/todos/completed/:date",async(req,res) => {
 
 app.get("/todos/count",async (req,res)=>{
     try{
-        const totalCompletedTodo = await Todo.countDocuments({
+        const totalCompletedTodo = await ToDo.countDocuments({
             status:'completed'
         }).exec()
 
-        const totalPendingTodo = await Todo.countDocuments({
+        const totalPendingTodo = await ToDo.countDocuments({
             status:'pending'
         }).exec()
 
