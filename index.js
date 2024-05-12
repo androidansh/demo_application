@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken")
 const app = express()
 const port = 3000;
-const ToDo = require("../api/models/todos.js")
+const ToDo = require("./models/todos.js")
 
 const moment = require("moment")
 
