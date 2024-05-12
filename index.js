@@ -7,7 +7,6 @@ const app = express()
 const port = 3000;
 const ToDo = require("./models/todos.js")
 
-const moment = require("moment")
 
 app.use(require("cors")({
     origin: "*"
