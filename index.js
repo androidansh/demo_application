@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken")
 const app = express()
 const port = 3000;
 const ToDo = require("./models/todos.js")
-const User = require("./models/user")
+
 
 app.use(require("cors")({
     origin: "*"
@@ -29,11 +29,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 
-<<<<<<< HEAD
 const User = require("./models/user")
 
-=======
->>>>>>> 41c653fd200ff200e23fe2a4178dcfb878a3c170
 
 // creting the user
 app.get('/', (req, res) => {
